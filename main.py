@@ -10,8 +10,10 @@ def main():
         while True:
             timee = round(time.time())
             if timee % 60 == 0:
-                timegm = time.gmtime()
-                current_time = "{}:{}".format(timegm.tm_hour+3, timegm.tm_min)
+                print(1)
+                time.sleep(5)
+                (H, M) = (int(time.strftime("%H", time.gmtime())), time.strftime("%M", time.gmtime()))
+                current_time = "{}:{}".format(H+3, M)
                 generate_image(current_time)
                 image = client.upload_file('time.jpg')
                 client(DeletePhotosRequest(client.get_profile_photos('me')))
